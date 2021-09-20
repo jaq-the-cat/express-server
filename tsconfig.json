@@ -7,7 +7,9 @@
     "sourceMap": true,
     "rootDir": "src",
     "outDir": "dist",
-    "strict": true
+    "strict": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
   },
   "lib": ["es2015"]
 }
