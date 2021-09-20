@@ -1,5 +1,5 @@
 import express from 'express';
-import session from 'express-session';
+import session from 'cookie-session';
 
 export const app = express();
 app.use(express.json());
