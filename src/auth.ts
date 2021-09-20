@@ -2,7 +2,7 @@ import { Express } from 'express';
 import db from './db';
 
 module.exports = (app: Express) => {
-  app.get('/', (req, res) => {
+  app.get('/get', (req, res) => {
     let idx: number = req.body.idx;
     res.send({
       suc: true,
