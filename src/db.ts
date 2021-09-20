@@ -1,7 +1,6 @@
 type DbSchema = {
   name: string;
-  x: number;
-  y: number;
+  password: string
 }
 
 let db: DbSchema[] = [];

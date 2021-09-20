@@ -3,7 +3,6 @@ import session from 'express-session';
 
 export const app = express();
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
 app.use(session({
   secret: process.env.SECRET || 'secret',
   resave: true,
@@ -13,7 +12,7 @@ app.use(session({
 declare module 'express-session' {
   interface SessionData {
     signedin: boolean;
-    username: string | null;
+    name: string | null;
   }
 }
 

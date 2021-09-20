@@ -10,37 +10,43 @@ module.exports = (app: Express) => {
     });
   })
 
-  app.post('/create', (req, res) => {
-    let idx = db.push({
-      name: req.body.name,
-      x: req.body.x,
-      y: req.body.y,
-    }) - 1;
-
+  app.get('/all', (req, res) => {
     res.send({
       suc: true,
-      'id': idx,
-    });
-  })
+      users: db.splice(0, req.body.limit),
+    })
+  });
 
-  app.post('/login', (req, res) => {
+  app.post('/signin', (req, res) => {
     const name = req.body.name;
     const idx = db.findIndex((v) => v.name === name);
     console.log(idx);
     if (idx) {
       req.session.signedin = true;
-      req.session.username = name;
+      req.session.name = name;
     }
     res.send({
       suc: true,
-      'id': idx,
+      id: idx,
     });
   })
 
-  app.get('/logout', (req, res) => {
+  app.post('/signup', (req, res) => {
+    let idx = db.push({
+      name: req.body.name,
+      password: req.body.password,
+    }) - 1;
+
+    res.send({
+      suc: true,
+      id: idx,
+    });
+  })
+
+  app.get('/signout', (req, res) => {
     if (!req.session.signedin) {
       req.session.signedin = false;
-      req.session.username = null;
+      req.session.name = null;
       res.send({
         suc: true
       });
@@ -51,11 +57,11 @@ module.exports = (app: Express) => {
     }
   })
 
-  app.get('/islogged', (req, res) => {
+  app.get('/issignedin', (req, res) => {
     res.send({
       suc: true,
       signedin: req.session.signedin,
-      username: req.session.username,
+      name: req.session.name,
     });
   });
 }
