@@ -5,8 +5,6 @@ export const app = express();
 app.use(express.json());
 app.use(session({
   secret: process.env.SECRET || 'secret',
-  resave: true,
-  saveUninitialized: true
 }));
 
 declare module 'express-session' {
