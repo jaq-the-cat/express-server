@@ -37,6 +37,20 @@ module.exports = (app: Express) => {
     });
   })
 
+  app.get('/logout', (req, res) => {
+    if (!req.session.signedin) {
+      req.session.signedin = false;
+      req.session.username = null;
+      res.send({
+        suc: true
+      });
+    } else {
+      res.send({
+        suc: false
+      });
+    }
+  })
+
   app.get('/islogged', (req, res) => {
     res.send({
       suc: true,

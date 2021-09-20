@@ -12,8 +12,8 @@ app.use(session({
 
 declare module 'express-session' {
   interface SessionData {
-    signedin: boolean
-    username: string
+    signedin: boolean;
+    username: string | null;
   }
 }
 
