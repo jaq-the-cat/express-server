@@ -15,7 +15,7 @@ declare module 'express-session' {
 }
 
 // register routes
-require('./auth')(app);
+import './auth';
 
 // run server
 const PORT = process.env.PORT || 5000;

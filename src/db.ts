@@ -3,5 +3,5 @@ type DbSchema = {
   password: string
 }
 
-let db: DbSchema[] = [];
+const db: DbSchema[] = [];
 export default db;
